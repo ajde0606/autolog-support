@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autolog - Privacy & Support</title>
+    <title>AutoLog Voice Notes — Capture Life at the Speed of Thought</title>
     <style>
         * {
             margin: 0;
@@ -13,342 +13,553 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f5f5f7;
+            line-height: 1.7;
+            color: #1f2933;
+            background: #f5f7fb;
+            padding: 0 12px 40px;
         }
 
-        .container {
-            max-width: 800px;
+        .page {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+        }
+
+        a {
+            color: #4f46e5;
+            text-decoration: none;
         }
 
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            background: radial-gradient(circle at 20% 20%, rgba(102, 126, 234, 0.18), transparent 35%),
+                        radial-gradient(circle at 80% 0%, rgba(118, 75, 162, 0.18), transparent 30%),
+                        linear-gradient(135deg, #111827, #1f2933);
             color: white;
-            padding: 60px 20px;
-            text-align: center;
-            margin-bottom: 40px;
-            border-radius: 12px;
-        }
-
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        header p {
-            font-size: 1.2em;
-            opacity: 0.95;
+            border-radius: 20px;
+            padding: 36px 36px 60px;
+            overflow: hidden;
+            margin: 24px 0 28px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
         }
 
         nav {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .logo {
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            font-size: 1.1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
         }
 
         nav a {
-            color: #667eea;
-            text-decoration: none;
-            margin: 0 15px;
+            color: rgba(255, 255, 255, 0.9);
             font-weight: 600;
-            transition: color 0.3s;
+            padding: 10px 14px;
+            border-radius: 10px;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         nav a:hover {
-            color: #764ba2;
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .hero p.subheadline {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 18px;
+        }
+
+        .hero .cn {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .btn {
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 14px 40px rgba(102, 126, 234, 0.45);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.12);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .pill-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+
+        .pill {
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
         }
 
         section {
             background: white;
-            padding: 40px;
-            margin-bottom: 30px;
-            border-radius: 12px;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 10px 32px rgba(17, 24, 39, 0.08);
         }
 
         h2 {
-            color: #667eea;
-            font-size: 2em;
+            color: #4f46e5;
+            font-size: 1.8rem;
+            margin-bottom: 14px;
+        }
+
+        .section-lead {
+            color: #4b5563;
             margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #667eea;
+            font-size: 1.02rem;
         }
 
-        h3 {
-            color: #764ba2;
-            font-size: 1.4em;
-            margin-top: 30px;
-            margin-bottom: 15px;
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
         }
 
-        p {
-            margin-bottom: 15px;
-            color: #555;
+        .card {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            padding: 20px;
+            border-radius: 14px;
         }
 
-        ul {
+        .card h3 {
+            color: #111827;
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+
+        .card p {
+            color: #4b5563;
+            margin-bottom: 8px;
+        }
+
+        .dual-line {
+            color: #6b7280;
+            font-size: 0.96rem;
+        }
+
+        ul.list {
+            list-style: disc;
             margin-left: 20px;
-            margin-bottom: 15px;
-        }
-
-        li {
-            margin-bottom: 10px;
-            color: #555;
+            color: #4b5563;
         }
 
         .highlight {
-            background-color: #f0f4ff;
-            padding: 20px;
-            border-left: 4px solid #667eea;
-            border-radius: 4px;
-            margin: 20px 0;
+            background-color: #eef2ff;
+            padding: 18px;
+            border-left: 4px solid #4f46e5;
+            border-radius: 10px;
+            margin: 18px 0;
         }
 
-        .contact-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .cta-panel {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            padding: 30px;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
-
-        .contact-box a {
-            color: white;
-            text-decoration: underline;
+            padding: 34px 20px;
+            border-radius: 16px;
         }
 
         footer {
             text-align: center;
-            padding: 30px;
-            color: #666;
-            margin-top: 40px;
-        }
-
-        .last-updated {
-            font-style: italic;
-            color: #888;
-            font-size: 0.9em;
             margin-top: 20px;
+            color: #6b7280;
+            font-size: 0.95rem;
         }
 
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8em;
+        footer p + p {
+            margin-top: 4px;
+        }
+
+        @media (max-width: 640px) {
+            header {
+                padding: 24px 20px 46px;
             }
 
-            section {
-                padding: 25px;
-            }
-
-            nav a {
-                display: block;
-                margin: 10px 0;
+            nav ul {
+                width: 100%;
+                justify-content: flex-start;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Autolog</h1>
-            <p>Quick voice capture, intelligent organization</p>
+    <div class="page">
+        <header id="top">
+            <nav>
+                <div class="logo">AutoLog Voice Notes</div>
+                <ul>
+                    <li><a href="#ai-assistant">Product</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#use-cases">Use Cases</a></li>
+                    <li><a href="#trust">Privacy</a></li>
+                    <li><a href="#support">Support</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="hero">
+                <div>
+                    <p class="pill">AI-forward • Bilingual • Privacy-first</p>
+                    <h1>Capture Life at the Speed of Thought</h1>
+                    <p class="subheadline">Speak naturally. AutoLog converts your voice into clean notes, tasks, and reminders—instantly and intelligently.</p>
+                    <p class="cn">思绪的速度，就是记录的速度。AutoLog 将你的语音瞬间转换为笔记、待办和提醒，智能且高效。</p>
+                    <div class="cta-group">
+                        <button class="btn btn-primary">Download on the App Store</button>
+                        <button class="btn btn-secondary">立即下载</button>
+                    </div>
+                    <div class="pill-row">
+                        <span class="pill">On-device privacy</span>
+                        <span class="pill">AI transcription</span>
+                        <span class="pill">Auto reminders</span>
+                    </div>
+                </div>
+                <div class="card" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1); color: white;">
+                    <h3 style="color: white;">Think out loud</h3>
+                    <p class="dual-line">Ultra-accurate AI turns spoken ideas into structured notes, todos, and timelines.</p>
+                    <p class="dual-line">超高精度 AI 将你的语音想法整理成笔记、待办与时间线。</p>
+                    <div class="highlight" style="background: rgba(255,255,255,0.08); color: white; border-color: rgba(255,255,255,0.4);">
+                        <strong>Privacy-first:</strong> On-device processing. Nothing is uploaded. Nothing is shared.<br>
+                        <span class="dual-line">隐私至上：本地处理，不上传、不共享。</span>
+                    </div>
+                </div>
+            </div>
         </header>
 
-        <nav>
-            <a href="#privacy">Privacy Policy</a>
-            <a href="#support">Support</a>
-            <a href="#contact">Contact</a>
-        </nav>
+        <main>
+            <section id="ai-assistant">
+                <h2>Your AI Voice Assistant for Everyday Life</h2>
+                <p class="section-lead">AutoLog is built for effortless daily capture. No typing, no organizing, no friction. Just speak—and your thoughts become structured information you can act on.</p>
+                <div class="highlight">
+                    <p><strong>你的日常 AI 语音助手：</strong> AutoLog 为日常记录而生。无需打字、无需整理、零负担。开口即可，你的想法就会被自动整理成可执行的信息。</p>
+                </div>
+            </section>
 
-        <section id="privacy">
-            <h2>Privacy Policy</h2>
-            <p class="last-updated">Last Updated: November 30, 2025</p>
+            <section id="features">
+                <h2>Core Features</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Ultra-Accurate AI Transcription</h3>
+                        <p>Capture anything with a single tap. AutoLog uses advanced AI models to convert speech into clean, readable text in real time.</p>
+                        <p class="dual-line">超高精度的 AI 语音转文字：一键记录任何内容，先进模型实时转为清晰、易读的文本。</p>
+                    </div>
+                    <div class="card">
+                        <h3>Automatic Task Detection</h3>
+                        <p>AutoLog identifies todos, deadlines, and action items—so your spoken ideas instantly become tasks.</p>
+                        <p class="dual-line">自动提取待办：自动识别待办、截止日期和动作，将语音想法瞬间变成可执行事项。</p>
+                    </div>
+                    <div class="card">
+                        <h3>Smart Auto-Reminders</h3>
+                        <p>Say a time, date, or commitment. AutoLog creates reminders automatically—never forget anything again.</p>
+                        <p class="dual-line">智能自动提醒：说出时间、日期或承诺，系统自动创建提醒，不再遗漏重要事项。</p>
+                    </div>
+                    <div class="card">
+                        <h3>Organized Without Trying</h3>
+                        <p>Everything you capture flows into a clean, chronological timeline that makes your day easier to navigate.</p>
+                        <p class="dual-line">自动整理的时间线：所有记录进入整洁的时间线，让你轻松掌控每日信息。</p>
+                    </div>
+                    <div class="card">
+                        <h3>Privacy-First AI</h3>
+                        <p>Your data stays on your phone. Nothing is uploaded. Nothing is shared. Full intelligence with full privacy.</p>
+                        <p class="dual-line">本地处理，更安全：数据仅在设备上处理，不上传、不共享。真正的智能，真正的隐私。</p>
+                    </div>
+                </div>
+            </section>
 
-            <h3>1. Introduction</h3>
-            <p>Autolog is designed with your privacy as a top priority. This policy explains how we handle your data when you use our voice note application.</p>
+            <section id="use-cases">
+                <h2>Made for Real Life</h2>
+                <p class="section-lead">Whether you're brainstorming ideas, capturing tasks on the go, logging meetings, or organizing your day—AutoLog makes it effortless.</p>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Use Cases</h3>
+                        <ul class="list">
+                            <li>Quick voice notes</li>
+                            <li>Daily task capture</li>
+                            <li>Meeting action items</li>
+                            <li>Reminders on the fly</li>
+                            <li>Journaling by talking</li>
+                            <li>Walking/commuting capture</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>使用场景</h3>
+                        <ul class="list">
+                            <li>随手语音笔记</li>
+                            <li>日常任务记录</li>
+                            <li>会议待办提取</li>
+                            <li>即刻创建提醒</li>
+                            <li>语音日记</li>
+                            <li>通勤/步行时记录</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3>Why People Love It</h3>
+                        <p>“AutoLog feels like the missing layer between speaking and thinking.”</p>
+                        <p>“Finally, a notes app that keeps up with my brain.”</p>
+                        <p class="dual-line">“AutoLog 就像是思维与记录之间缺失的一层。”<br>“终于有一个能跟上我思维速度的笔记应用了。”</p>
+                    </div>
+                </div>
+            </section>
 
-            <div class="highlight">
-                <strong>Key Privacy Principle:</strong> Your voice recordings and transcripts stay on your device. We do not operate any backend servers, and we do not collect, store, or have access to your personal data.
-            </div>
+            <section id="trust">
+                <h2>Privacy & Trust</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>On-Device Intelligence</h3>
+                        <p>Your recordings, transcripts, and tasks remain on your phone. No uploads, no sharing, ever.</p>
+                        <p class="dual-line">全部数据仅在手机本地处理，绝不上传或共享。</p>
+                    </div>
+                    <div class="card">
+                        <h3>Transparency First</h3>
+                        <p>Clear controls for speech recognition, reminders, and optional Gemini-powered classification—enabled only when you choose.</p>
+                        <p class="dual-line">语音识别、提醒、可选的 Gemini 分类全部可控，完全由你决定。</p>
+                    </div>
+                    <div class="card">
+                        <h3>Ready for Action</h3>
+                        <p>Structured notes flow into tasks and reminders automatically, so you can move from idea to execution faster.</p>
+                        <p class="dual-line">结构化笔记自动生成任务与提醒，让灵感立刻可执行。</p>
+                    </div>
+                </div>
+            </section>
 
-            <h3>2. Data Collection and Storage</h3>
-            <p>Autolog collects and stores the following data locally on your device:</p>
-            <ul>
-                <li><strong>Voice Recordings:</strong> Audio files from your voice notes are stored locally on your device</li>
-                <li><strong>Transcripts:</strong> Text transcriptions of your voice notes using on-device speech recognition</li>
-                <li><strong>Classification Data:</strong> Category and status (to-do/done) assignments for your notes</li>
-                <li><strong>Metadata:</strong> Creation dates, modification dates, and other organizational information</li>
-            </ul>
-            <p>All data is stored using iOS secure storage mechanisms (SwiftData) and never leaves your device except as described below.</p>
+            <section id="cta" class="cta-panel">
+                <h2 style="color: white;">Think Out Loud. AutoLog Does the Rest.</h2>
+                <p style="margin: 12px 0 18px;">Download AutoLog Voice Notes — Free on the App Store</p>
+                <p class="cn" style="color: rgba(255,255,255,0.92); margin-bottom: 16px;">开口即完成，其余交给 AutoLog。立即下载 AutoLog Voice Notes — 免费使用</p>
+                <div class="cta-group" style="justify-content: center;">
+                    <button class="btn btn-primary">Download on the App Store</button>
+                    <button class="btn btn-secondary">立即下载</button>
+                </div>
+            </section>
 
-            <h3>3. Third-Party Services</h3>
-            <h4>Gemini API (Optional)</h4>
-            <p>Autolog offers optional integration with Google's Gemini API for enhanced note classification:</p>
-            <ul>
-                <li><strong>User Control:</strong> This feature is completely optional and disabled by default</li>
-                <li><strong>Your API Key:</strong> You must provide your own Gemini API key, which is stored securely in your device's Keychain</li>
-                <li><strong>Data Sent:</strong> When enabled, only the text transcript of your voice note is sent to Gemini for classification</li>
-                <li><strong>Audio Files:</strong> Your audio recordings are NEVER sent to Gemini or any external service</li>
-                <li><strong>Fallback:</strong> If Gemini is unavailable or disabled, all classification happens locally on your device</li>
-            </ul>
-            <p>When using Gemini API, your transcript data is subject to Google's privacy policy and terms of service. We recommend reviewing Google's policies before enabling this feature.</p>
+            <section id="privacy">
+                <h2>Privacy</h2>
+                <p>Autolog is a privacy-first app that runs entirely on your device. We collect no user data and have no server infrastructure.</p>
 
-            <h3>4. On-Device Processing</h3>
-            <p>Autolog uses the following on-device technologies:</p>
-            <ul>
-                <li><strong>Speech Recognition:</strong> Apple's SFSpeechRecognizer for transcription</li>
-                <li><strong>Local Classification:</strong> Rule-based classifier that works entirely offline</li>
-                <li><strong>Secure Storage:</strong> SwiftData for notes and iOS Keychain for API keys</li>
-            </ul>
+                <div class="highlight">
+                    <p><strong>Summary:</strong> Autolog processes all data locally on your iOS device. No data is ever transmitted to any servers. Optional features that require external services are clearly labeled and disabled by default.</p>
+                </div>
 
-            <h3>5. Data Security</h3>
-            <ul>
-                <li><strong>API Key Protection:</strong> Your Gemini API key (if provided) is stored in the iOS Keychain, the most secure storage available on iOS</li>
-                <li><strong>No Cloud Backup:</strong> We do not sync your data to any cloud service</li>
-                <li><strong>Device Security:</strong> Your data is protected by your device's security features (passcode, Face ID, Touch ID)</li>
-            </ul>
-
-            <h3>6. Data Sharing and Disclosure</h3>
-            <p>We do not share, sell, or disclose your data to any third parties, except:</p>
-            <ul>
-                <li>When you explicitly enable Gemini API integration (only transcripts are sent)</li>
-                <li>As required by law or legal process</li>
-            </ul>
-
-            <h3>7. Your Rights and Choices</h3>
-            <p>You have complete control over your data:</p>
-            <ul>
-                <li><strong>Access:</strong> All your data is stored locally and accessible through the app</li>
-                <li><strong>Deletion:</strong> You can delete individual notes or all data through the app</li>
-                <li><strong>Gemini Toggle:</strong> Enable or disable Gemini integration at any time</li>
-                <li><strong>Export:</strong> Your data remains in standard iOS storage and can be backed up via iTunes/iCloud if you enable iOS backups</li>
-            </ul>
-
-            <h3>8. Children's Privacy</h3>
-            <p>Autolog does not knowingly collect any information from children. The app is intended for general audiences and operates entirely on-device.</p>
-
-            <h3>9. Changes to This Policy</h3>
-            <p>We may update this privacy policy from time to time. Any changes will be reflected in the app and on this page with an updated "Last Updated" date.</p>
-
-            <h3>10. Data Retention</h3>
-            <p>Your data is retained on your device until you choose to delete it. If you uninstall the app, all locally stored data will be removed according to iOS data handling policies.</p>
-        </section>
-
-        <section id="support">
-            <h2>Support</h2>
-
-            <h3>Getting Started</h3>
-            <p>Autolog makes it easy to capture and organize your thoughts:</p>
-            <ol>
-                <li><strong>Quick Capture:</strong> Tap the home screen shortcut or widget to start recording immediately</li>
-                <li><strong>Record:</strong> Speak your note - the app will transcribe in real-time</li>
-                <li><strong>Auto-Classify:</strong> Your note is automatically categorized and marked as to-do or done</li>
-                <li><strong>Review & Edit:</strong> Browse your notes by category and status, edit as needed</li>
-            </ol>
-
-            <h3>Frequently Asked Questions</h3>
-
-            <h4>How does classification work?</h4>
-            <p>Autolog uses two classification methods:</p>
-            <ul>
-                <li><strong>Local (Default):</strong> Rule-based classification using keyword matching - completely offline and private</li>
-                <li><strong>Gemini API (Optional):</strong> AI-powered classification using Google's Gemini - requires your own API key</li>
-            </ul>
-
-            <h4>What are the available categories?</h4>
-            <p>Autolog supports the following fixed categories:</p>
-            <ul>
-                <li>Work</li>
-                <li>Study</li>
-                <li>Family</li>
-                <li>Social</li>
-                <li>Food & Drink</li>
-                <li>Fitness</li>
-                <li>Music</li>
-                <li>Game</li>
-                <li>Book</li>
-                <li>Medical</li>
-                <li>Shopping</li>
-                <li>Sports</li>
-                <li>Travel</li>
-                <li>Weather</li>
-                <li>Finance</li>
-            </ul>
-
-            <h4>How do I get a Gemini API key?</h4>
-            <ol>
-                <li>Visit <a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
-                <li>Sign in with your Google account</li>
-                <li>Create a new API key</li>
-                <li>Copy the key and paste it into Autolog Settings</li>
-            </ol>
-            <p><strong>Note:</strong> This is completely optional. Autolog works perfectly without Gemini API.</p>
-
-            <h4>Can I edit the classification?</h4>
-            <p>Yes! Tap any note to view details, where you can:</p>
-            <ul>
-                <li>Change the category</li>
-                <li>Toggle between to-do and done</li>
-                <li>Edit the transcript text</li>
-                <li>Delete the note</li>
-            </ul>
-
-            <h4>Does Autolog work offline?</h4>
-            <p>Yes! Autolog is designed to work completely offline using local classification. The Gemini API feature is optional and only used when enabled and internet is available.</p>
-
-            <h4>Is my data backed up?</h4>
-            <p>Your data is stored locally on your device. If you have iCloud or iTunes backup enabled for your device, your Autolog data will be included in those backups.</p>
-
-            <h4>What languages are supported for transcription?</h4>
-            <p>Autolog uses Apple's speech recognition, which supports multiple languages. The available languages depend on your iOS version and device settings.</p>
-
-            <div class="highlight">
-                <h4>Troubleshooting</h4>
-                <ul>
-                    <li><strong>Microphone not working:</strong> Check that you've granted microphone permissions in iOS Settings > Autolog</li>
-                    <li><strong>Speech recognition not working:</strong> Ensure you've granted speech recognition permissions</li>
-                    <li><strong>Gemini not classifying:</strong> Verify your API key is entered correctly and you have internet connection</li>
-                    <li><strong>App crashes:</strong> Try restarting the app or your device</li>
+                <h3>Data We Access</h3>
+                <ul class="list">
+                    <li><strong>Microphone Access:</strong> Required for recording voice notes</li>
+                    <li><strong>Speech Recognition:</strong> Used to transcribe your voice to text</li>
+                    <li><strong>Local Storage:</strong> Used to store your notes and categories</li>
+                    <li><strong>Optional Gemini API:</strong> If you provide your own API key, we can use Google's Gemini model for improved classification</li>
                 </ul>
-            </div>
-        </section>
 
-        <section id="contact">
-            <h2>Contact & Feedback</h2>
-            <p>We value your feedback and are here to help!</p>
-
-            <div class="contact-box">
-                <h3 style="color: white; border: none; margin-top: 0;">Get in Touch</h3>
-                <p>For support requests, feature suggestions, or bug reports, please reach out:</p>
-                <ul>
-                    <li>Email: <a href="mailto:support@autolog.app">hornliquant@gmail.com</a></li>
-                    <li>GitHub Issues: For technical issues and feature requests</li>
+                <h3>Data We Do NOT Collect</h3>
+                <ul class="list">
+                    <li>No account creation</li>
+                    <li>No personal identifiers</li>
+                    <li>No analytics</li>
+                    <li>No third-party tracking</li>
+                    <li>No server communication</li>
                 </ul>
-            </div>
 
-            <h3>Feature Requests</h3>
-            <p>We're constantly improving Autolog. If you have ideas for new features or improvements, we'd love to hear from you!</p>
+                <h3>Classification Options</h3>
+                <ul class="list">
+                    <li><strong>Local Classification (Default):</strong> Uses rule-based keyword matching, entirely offline</li>
+                    <li><strong>Gemini Classification (Optional):</strong> Uses Google's Gemini API with your own API key. All requests are sent directly to Google; we do not proxy or store any data.</li>
+                </ul>
 
-            <h3>Bug Reports</h3>
-            <p>If you encounter any issues, please include:</p>
-            <ul>
-                <li>iOS version</li>
-                <li>Device model</li>
-                <li>Steps to reproduce the issue</li>
-                <li>Expected vs actual behavior</li>
-            </ul>
-        </section>
+                <h3>Data Security</h3>
+                <ul class="list">
+                    <li>All data is stored locally on your device</li>
+                    <li>No remote backups or cloud sync</li>
+                    <li>Removing the app will delete all stored data</li>
+                    <li>iOS backup (if enabled) may include your Autolog data</li>
+                </ul>
+
+                <h3>Permissions</h3>
+                <p>Autolog requests the following permissions:</p>
+                <ul class="list">
+                    <li>Microphone: to record audio</li>
+                    <li>Speech Recognition: to convert speech to text</li>
+                    <li>Notifications: for task reminders</li>
+                </ul>
+
+                <p>We request the minimal set of permissions required for the app to function. You can manage these permissions in iOS Settings.</p>
+
+                <h3>Data Retention</h3>
+                <p>All data remains on your device. If you delete the app, all data will be removed according to iOS data handling policies.</p>
+            </section>
+
+            <section id="support">
+                <h2>Support</h2>
+
+                <h3>Getting Started</h3>
+                <p>Autolog makes it easy to capture and organize your thoughts:</p>
+                <ol class="list" style="list-style: decimal;">
+                    <li><strong>Quick Capture:</strong> Tap the home screen shortcut or widget to start recording immediately</li>
+                    <li><strong>Record:</strong> Speak your note - the app will transcribe in real-time</li>
+                    <li><strong>Auto-Classify:</strong> Your note is automatically categorized and marked as to-do or done</li>
+                    <li><strong>Review & Edit:</strong> Browse your notes by category and status, edit as needed</li>
+                </ol>
+
+                <h3>Frequently Asked Questions</h3>
+
+                <h4>How does classification work?</h4>
+                <p>Autolog uses two classification methods:</p>
+                <ul class="list">
+                    <li><strong>Local (Default):</strong> Rule-based classification using keyword matching - completely offline and private</li>
+                    <li><strong>Gemini API (Optional):</strong> AI-powered classification using Google's Gemini - requires your own API key</li>
+                </ul>
+
+                <h4>What are the available categories?</h4>
+                <p>Autolog supports the following fixed categories:</p>
+                <ul class="list">
+                    <li>Work</li>
+                    <li>Study</li>
+                    <li>Family</li>
+                    <li>Social</li>
+                    <li>Food & Drink</li>
+                    <li>Fitness</li>
+                    <li>Music</li>
+                    <li>Game</li>
+                    <li>Book</li>
+                    <li>Medical</li>
+                    <li>Shopping</li>
+                    <li>Sports</li>
+                    <li>Travel</li>
+                    <li>Weather</li>
+                    <li>Finance</li>
+                </ul>
+
+                <h4>How do I get a Gemini API key?</h4>
+                <ol class="list" style="list-style: decimal;">
+                    <li>Visit <a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
+                    <li>Sign in with your Google account</li>
+                    <li>Create a new API key</li>
+                    <li>Copy the key and paste it into Autolog Settings</li>
+                </ol>
+                <p><strong>Note:</strong> This is completely optional. Autolog works perfectly without Gemini API.</p>
+
+                <h4>Can I edit the classification?</h4>
+                <p>Yes! Tap any note to view details, where you can:</p>
+                <ul class="list">
+                    <li>Change the category</li>
+                    <li>Toggle between to-do and done</li>
+                    <li>Edit the transcript text</li>
+                    <li>Delete the note</li>
+                </ul>
+
+                <h4>Does Autolog work offline?</h4>
+                <p>Yes! Autolog is designed to work completely offline using local classification. The Gemini API feature is optional and only used when enabled and internet is available.</p>
+
+                <h4>Is my data backed up?</h4>
+                <p>Your data is stored locally on your device. If you have iCloud or iTunes backup enabled for your device, your Autolog data will be included in those backups.</p>
+
+                <h4>What languages are supported for transcription?</h4>
+                <p>Autolog uses Apple's speech recognition, which supports multiple languages. The available languages depend on your iOS version and device settings.</p>
+
+                <div class="highlight">
+                    <h4>Troubleshooting</h4>
+                    <ul class="list">
+                        <li><strong>Microphone not working:</strong> Check that you've granted microphone permissions in iOS Settings &gt; Autolog</li>
+                        <li><strong>Speech recognition not working:</strong> Ensure you've granted speech recognition permissions</li>
+                        <li><strong>Gemini not classifying:</strong> Verify your API key is entered correctly and you have internet connection</li>
+                        <li><strong>App crashes:</strong> Try restarting the app or your device</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="contact">
+                <h2>Contact & Feedback</h2>
+                <p>We value your feedback and are here to help!</p>
+
+                <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none;">
+                    <h3 style="color: white; border: none; margin-top: 0;">Get in Touch</h3>
+                    <p>For support requests, feature suggestions, or bug reports, please reach out:</p>
+                    <ul class="list" style="color: white;">
+                        <li>Email: <a style="color: white;" href="mailto:hornliquant@gmail.com">hornliquant@gmail.com</a></li>
+                        <li>GitHub Issues: For technical issues and feature requests</li>
+                    </ul>
+                </div>
+
+                <h3>Feature Requests</h3>
+                <p>We're constantly improving Autolog. If you have ideas for new features or improvements, we'd love to hear from you!</p>
+
+                <h3>Bug Reports</h3>
+                <p>If you encounter any issues, please include:</p>
+                <ul class="list">
+                    <li>iOS version</li>
+                    <li>Device model</li>
+                    <li>Steps to reproduce the issue</li>
+                    <li>Expected vs actual behavior</li>
+                </ul>
+            </section>
+        </main>
 
         <footer>
-            <p>&copy; 2025 Autolog. All rights reserved.</p>
-            <p>Built with privacy in mind.</p>
+            <p>&copy; 2025 Autolog Voice Notes. Privacy-first AI for everyday life.</p>
+            <p>© AutoLog Voice Notes — 以隐私为核心的日常 AI 工具。</p>
         </footer>
     </div>
 </body>
